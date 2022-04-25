@@ -39,7 +39,7 @@ https://<github-user-name>.github.io/<github-project-name>/
 Example:
 
 ```bash
-https://github.com/thierryc/Next-gh-page-example/
+https://github.com/thierryc/dlh/
 
-https://thierryc.github.io/Next-gh-page-example/
+https://thierryc.github.io/dlh/
 ```
