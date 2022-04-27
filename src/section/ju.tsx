@@ -4,16 +4,7 @@ import { AppContext } from '../../pages';
 import { FenJu } from './fenju';
 
 const Ju = () => {
-  const { trys, setTrys, fenjus, setFenjus } = useContext(AppContext);
-  const append = (s: string) => {
-    trys.push(s);
-    setTrys([...trys]);
-    setFenjus(
-      fenjus.map((f: string) => ({
-        fenju: f,
-      }))
-    );
-  };
+  const { fenjus } = useContext(AppContext);
   return (
     <VStack
       w="full"

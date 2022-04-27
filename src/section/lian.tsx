@@ -2,9 +2,6 @@ import { VStack, Heading, Text, Button, ButtonGroup } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { AppContext } from '../../pages';
 
-const equals = (a: string[], b: string[]) =>
-  a.length === b.length && a.every((v, i) => v === b[i]);
-
 function getColor(a: string[], b: string[]) {
   if (a.length != b.length) return 'steel';
   if (a.every((v, i) => v === b[i])) return 'green';

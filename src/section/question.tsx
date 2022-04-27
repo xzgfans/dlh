@@ -7,9 +7,7 @@ import { AppContext } from '../../pages';
 
 const Question = () => {
   const {
-    trys,
     setTrys,
-    fenjus,
     setFenjus,
     answers,
     setAnswers,
