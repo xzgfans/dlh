@@ -1,7 +1,5 @@
-import { Button, Container, Flex, TabList, Tabs, Tab, TabPanels, TabPanel } from '@chakra-ui/react';
-import { create } from 'domain';
-import { useState, useContext, createContext, useReducer } from 'react';
-import { api, IQuestion } from '../src/api/api';
+import { Container, TabList, Tabs, Tab, TabPanels, TabPanel } from '@chakra-ui/react';
+import { useState, createContext, useReducer } from 'react';
 import { Configuration, reduceSelectedItems } from '../src/section/configuration';
 import Question from '../src/section/question';
 import { Yuanwen } from '../src/section/yuanwen';
