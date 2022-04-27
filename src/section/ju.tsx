@@ -1,7 +1,7 @@
 import { VStack, Heading, Text, Button } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { AppContext } from '../../pages';
-import { FenJu, IFenJu } from './fenju';
+import { FenJu } from './fenju';
 
 const Ju = () => {
   const { trys, setTrys, fenjus, setFenjus } = useContext(AppContext);
@@ -9,9 +9,8 @@ const Ju = () => {
     trys.push(s);
     setTrys([...trys]);
     setFenjus(
-      fenjus.map((f: IFenJu) => ({
-        fenju: f.fenju,
-        selected: s == f.fenju ? true : f.selected
+      fenjus.map((f: string) => ({
+        fenju: f,
       }))
     );
   };
@@ -24,13 +23,10 @@ const Ju = () => {
       alignItems="flex-start"
       bg="gray.100"
     >
-      {fenjus.map((ju: IFenJu, index: number) => (
+      {fenjus.map((ju: string, index: number) => (
         <FenJu
           key={index}
-          selected={ju.selected}
-          fenju={ju.fenju}
-          append={append}
-        ></FenJu>
+          fenju={ju} />
       ))}
     </VStack>
   );

@@ -4,7 +4,6 @@ import Ju from './ju';
 import { api } from '../api/api';
 import { useContext, useEffect } from 'react';
 import { AppContext } from '../../pages';
-import { IFenJu } from './fenju';
 
 const Question = () => {
   const {
@@ -23,29 +22,17 @@ const Question = () => {
 
   const reset = () => {
     setTrys([]);
-    setFenjus(fenjus.map((f: IFenJu) => ({ fenju: f.fenju, selected: false })));
   };
   const hint = () => {
     setTrys([answers[0]]);
-    setFenjus(
-      fenjus.map((f: IFenJu) => ({
-        fenju: f.fenju,
-        selected: f.fenju == answers[0] ? true : false
-      }))
-    );
   };
   const show = () => {
     setTrys([...answers]);
-    setFenjus(fenjus.map((f: IFenJu) => ({ fenju: f.fenju, selected: true })));
   };
   const nextQ = async () => {
     const { answer, yuanwen } = await api(checkedItems);
     const answers = answer.slice(0, -1).split(/[，；？]/);
-    const fenjus: IFenJu[] = answers.map((q: string) => ({
-      fenju: q,
-      selected: false
-    }));
-    fenjus.sort(() => Math.random() - 0.5);
+    const fenjus = [...answers].sort(() => Math.random() - 0.5);
     console.log(`Question:\nQ:${answers}\nA:${answers}`);
     setTrys([]);
     setFenjus(fenjus);

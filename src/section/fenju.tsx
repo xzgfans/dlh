@@ -1,17 +1,13 @@
 import { VStack, Heading, Text, Button } from '@chakra-ui/react';
+import { useContext } from 'react';
+import { AppContext } from '../../pages';
 
-export interface IFenJu {
-  fenju: string;
-  selected: boolean;
-}
-interface IPros extends IFenJu {
-  append: any;
-}
-
-export function FenJu({ selected, fenju, append }: IPros) {
-  function onClick() {
+export function FenJu({ fenju }) {
+  const { trys, setTrys } = useContext(AppContext)
+  const selected = trys.some(it => it === fenju)
+  const onClick = () => {
     if (!selected) {
-      append(fenju);
+      setTrys([...trys, fenju])
     }
   }
   return (

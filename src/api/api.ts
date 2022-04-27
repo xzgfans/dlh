@@ -3,7 +3,6 @@ import q3 from './q3.json';
 import q4 from './q4.json';
 import q5 from './q5.json';
 import tishu from './tishu.json';
-import { IFenJu } from '../section/fenju';
 const shuffleArray = (array: any[]) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -20,7 +19,7 @@ const qm: any = {
 };
 
 export interface IQuestion {
-  fenjus: IFenJu[];
+  fenjus: string[];
   answers: string[];
   yuanwen: string;
 }
