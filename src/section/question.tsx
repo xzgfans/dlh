@@ -39,8 +39,14 @@ const Question = () => {
     setFenjus(fenjus.map((f: IFenJu) => ({ fenju: f.fenju, selected: true })));
   };
   const nextQ = async () => {
-    const { fenjus, answers, yuanwen } = await api(checkedItems);
-    console.log(`Question:\nQ:${fenjus}\nA:${answers}`);
+    const { answer, yuanwen } = await api(checkedItems);
+    const answers = answer.slice(0, -1).split(/[，；？]/);
+    const fenjus: IFenJu[] = answers.map((q: string) => ({
+      fenju: q,
+      selected: false
+    }));
+    fenjus.sort(() => Math.random() - 0.5);
+    console.log(`Question:\nQ:${answers}\nA:${answers}`);
     setTrys([]);
     setFenjus(fenjus);
     setAnswers(answers);

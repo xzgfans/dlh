@@ -30,16 +30,10 @@ export async function api(checkedItems: string[]) {
   var qs = checkedItems.map((i) => qm[i]).reduce((acc, v) => acc.concat(v), []);
   console.log('qs:' + qs.length);
   const answer = qs[Math.floor(Math.random() * qs.length)];
-  const answers = answer.slice(0, -1).split(/[，；？]/);
-  const fenjus: IFenJu[] = answers.map((q: string) => ({
-    fenju: q,
-    selected: false
-  }));
-  fenjus.sort(() => Math.random() - 0.5);
+  const yuanwen = await getTishu(answer);
   return {
-    fenjus: fenjus,
-    answers: answers,
-    yuanwen: await getTishu(answer)
+    answer: answer,
+    yuanwen: yuanwen
   };
 }
 export async function getTishu(answer: string) {
