@@ -37,10 +37,17 @@ export async function api(checkedItems: string[]) {
 }
 export async function getTishu(answer: string) {
   console.log('search for ' + answer);
-  for (let t of tishu) {
-    if (t.search(answer) != -1) {
-      return t;
+  for (let i in tishu) {
+    if (tishu[i].search(answer) != -1) {
+      return [tishu[i], i];
     }
   }
   return 'NOT FOUND';
+}
+export async function getTishuByIndex(index: number): Promise<[string, number]> {
+  console.log("getTishuByIndex", index, tishu.length)
+  if (index < 0 || index > tishu.length) {
+    return ['NOT FOUND', -1];
+  }
+  return [tishu[index], index]
 }

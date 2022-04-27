@@ -4,8 +4,7 @@ import { Configuration, reduceSelectedItems } from '../src/section/configuration
 import Question from '../src/section/question';
 import { Yuanwen } from '../src/section/yuanwen';
 
-var any: any = null;
-export const AppContext = createContext(any);
+export const AppContext = createContext(null as any);
 const IndexPage = () => {
   const [trys, setTrys] = useState([])
   const [fenjus, setFenjus] = useState([])
@@ -13,17 +12,16 @@ const IndexPage = () => {
   const [yuanwen, setYuanwen] = useState("")
   const [checkedItems, checkItems] = useReducer(reduceSelectedItems, ["3分句"])
 
-
   return (
     <AppContext.Provider value={{ checkedItems, checkItems, trys, setTrys, fenjus, setFenjus, answers, setAnswers, yuanwen, setYuanwen }}>
-      <Container maxW="container.xl" p={0}>
-        <Tabs>
+      <Container maxW="container.xl" p={0} minH="100vh">
+        <Tabs minH="100vh">
           <TabList>
             <Tab>Question</Tab>
             <Tab>Configuration</Tab>
             <Tab>Yuanwen</Tab>
           </TabList>
-          <TabPanels>
+          <TabPanels minH="100vh">
             <TabPanel>
               <Question />
             </TabPanel>

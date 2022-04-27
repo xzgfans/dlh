@@ -39,7 +39,7 @@ const Question = () => {
   };
 
   return (
-    <Container maxW="container.xl" p={0}>
+    <Container maxW="container.xl" p={0} minH="100vh">
       <ButtonGroup bg="gray.100" width="full">
         <Button onClick={reset}>Reset</Button>
         <Button onClick={hint}>Hint</Button>
@@ -50,7 +50,7 @@ const Question = () => {
         h={{ base: 'auto', md: '100vh' }}
         py={[0, 1, 2]}
         direction={{ base: 'column', md: 'row' }}
-      >
+        minH="100vh">
         <Lian />
         <Ju />
       </Flex>
