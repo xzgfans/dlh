@@ -28,10 +28,7 @@ const Question = () => {
     setTrys([...answers]);
   };
   const nextQ = async () => {
-    const { answer, yuanwen } = await api(checkedItems);
-    const answers = answer.slice(0, -1).split(/[，；？]/);
-    const fenjus = [...answers].sort(() => Math.random() - 0.5);
-    console.log(`Question:\nQ:${answers}\nA:${answers}`);
+    const { fenjus, answers, yuanwen, index } = await api(checkedItems);
     setTrys([]);
     setFenjus(fenjus);
     setAnswers(answers);

@@ -1,4 +1,4 @@
-import { Checkbox, HStack } from '@chakra-ui/react';
+import { Checkbox, HStack, VStack } from '@chakra-ui/react';
 import { startCase } from 'lodash';
 import { useContext } from 'react';
 import { AppContext } from '../../pages';
@@ -16,7 +16,8 @@ export function Configuration() {
   const { checkedItems, checkItems } = useContext(AppContext);
 
   return (
-    <HStack pl={6} mt={1} spacing={1}>
+    <VStack>
+    <HStack pl={6} mt={1} spacing={1} align='left'>
       <Checkbox
         isChecked={checkedItems.includes('2分句')}
         onChange={(e) => checkItems({ type: e.target.checked, item: '2分句' })}
@@ -42,5 +43,15 @@ export function Configuration() {
         5+分句
       </Checkbox>
     </HStack>
+    <HStack pl={6} mt={1} spacing={1} align='left'>
+      <Checkbox
+        isChecked={checkedItems.includes('王维')}
+        onChange={(e) => checkItems({ type: e.target.checked, item: '王维' })}
+      >
+        王维
+      </Checkbox>
+  
+    </HStack>
+    </VStack>
   );
 }
