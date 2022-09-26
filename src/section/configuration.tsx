@@ -1,5 +1,4 @@
 import { Checkbox, HStack, VStack } from '@chakra-ui/react';
-import { startCase } from 'lodash';
 import { useContext } from 'react';
 import { AppContext } from '../../pages';
 

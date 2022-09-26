@@ -12,7 +12,8 @@ const Question = () => {
     answers,
     setAnswers,
     checkedItems,
-    setYuanwen
+    setYuanwen,
+    setIndex
   } = useContext(AppContext);
   useEffect(() => {
     nextQ();
@@ -29,10 +30,12 @@ const Question = () => {
   };
   const nextQ = async () => {
     const { fenjus, answers, yuanwen, index } = await api(checkedItems);
+    console.log("yuanwen", yuanwen)
     setTrys([]);
     setFenjus(fenjus);
     setAnswers(answers);
     setYuanwen(yuanwen);
+    setIndex(index);
   };
 
   return (

@@ -10,10 +10,11 @@ const IndexPage = () => {
   const [fenjus, setFenjus] = useState([])
   const [answers, setAnswers] = useState([])
   const [yuanwen, setYuanwen] = useState("")
+  const [index, setIndex] = useState("")
   const [checkedItems, checkItems] = useReducer(reduceSelectedItems, ["3分句"])
 
   return (
-    <AppContext.Provider value={{ checkedItems, checkItems, trys, setTrys, fenjus, setFenjus, answers, setAnswers, yuanwen, setYuanwen }}>
+    <AppContext.Provider value={{ checkedItems, checkItems, trys, setTrys, fenjus, setFenjus, answers, setAnswers, yuanwen, setYuanwen, index, setIndex }}>
       <Container maxW="container.xl" p={0} minH="100vh">
         <Tabs minH="100vh">
           <TabList>

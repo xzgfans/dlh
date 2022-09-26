@@ -4,7 +4,6 @@ import q4 from './q4.json';
 import q5 from './q5.json';
 import wangwei from './wangwei.json';
 import tishu from './tishu.json';
-import { StringOrNumber } from '@chakra-ui/utils';
 const shuffleArray = (array: any[]) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -55,10 +54,11 @@ export async function getTishu(answer: string): Promise<[string, Number]> {
   console.log('search for ' + answer);
   for (var i = 0; i < tishu.length; i ++) {
     if (tishu[i].search(answer) != -1) {
+      console.log('yuanwen ' + tishu[i]);
       return [tishu[i], i];
     }
   }
-  return ['NOT FOUND', 0];
+  return ['NOT FOUND', -1];
 }
 export async function getTishuByIndex(index: number): Promise<[string, number]> {
   console.log("getTishuByIndex", index, tishu.length)

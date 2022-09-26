@@ -5,16 +5,18 @@ import { AppContext } from '../../pages';
 import { getTishuByIndex } from '../api/api';
 
 export function Yuanwen() {
-  const { yuanwen, setYuanwen } = useContext(AppContext);
+  const { yuanwen, setYuanwen, index, setIndex } = useContext(AppContext);
   const handlers = useSwipeable({
     onSwipedLeft: async () => {
-      const yw = await getTishuByIndex(yuanwen[1] - 0 + 1)
+      const [yw, idx] = await getTishuByIndex(index + 1)
       console.log("yw", yw)
       setYuanwen(yw)
+      setIndex(idx)
     },
     onSwipedRight: async () => {
-      const yw = await getTishuByIndex(yuanwen[1] - 1)
+      const [yw, idx] = await getTishuByIndex(index -1)
       setYuanwen(yw)
+      setIndex(idx)
     }
   })
 
@@ -25,7 +27,7 @@ export function Yuanwen() {
       p={0}
       {...handlers}
       style={{ touchAction: 'pan-y' }}>
-      <Text>{yuanwen[0]}</Text>
+      <Text>{yuanwen}</Text>
     </Container >
   );
 }
