@@ -44,12 +44,17 @@ export function Configuration() {
     </HStack>
     <HStack pl={6} mt={1} spacing={1} align='left'>
       <Checkbox
-        isChecked={checkedItems.includes('王维')}
-        onChange={(e) => checkItems({ type: e.target.checked, item: '王维' })}
+        isChecked={checkedItems.includes('王维五律')}
+        onChange={(e) => checkItems({ type: e.target.checked, item: '王维五律' })}
       >
-        王维
+        王维五律
       </Checkbox>
-  
+      <Checkbox
+        isChecked={checkedItems.includes('杜甫五律')}
+        onChange={(e) => checkItems({ type: e.target.checked, item: '杜甫五律' })}
+      >
+        杜甫五律
+      </Checkbox>
     </HStack>
     </VStack>
   );

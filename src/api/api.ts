@@ -2,7 +2,8 @@ import q2 from './q2.json';
 import q3 from './q3.json';
 import q4 from './q4.json';
 import q5 from './q5.json';
-import wangwei from './wangwei.json';
+import wang5lv from './wang5lv.json';
+import du5lv from './du5lv.json';
 import tishu from './tishu.json';
 const shuffleArray = (array: any[]) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -17,7 +18,8 @@ const qm: any = {
   '3分句': q3,
   '4分句': q4,
   '5分句': q5,
-  '王维':wangwei
+  '王维五律':wang5lv,
+  '杜甫五律':du5lv
 };
 
 export class IQuestion {
