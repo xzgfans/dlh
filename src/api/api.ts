@@ -45,7 +45,7 @@ export class IQuestion {
     this.fenjus = [...this.answers].sort(() => Math.random() - 0.5);
   }
 }
-const regex=/^(.*?)“(.*；.*)”(.*)$/
+const regex=/^(.*?)“(.*?；.*?)”(.*)$/
 function parseLine(line: string): IQuestion {
   var m = regex.exec(line);
   if(m != null) {
