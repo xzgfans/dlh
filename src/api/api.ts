@@ -41,7 +41,7 @@ export class IQuestion {
     this.yuanwen = yuanwen;
     this.post = post;
     this.index = index;
-    this.answers = yuanwen.slice(0, -1).split(/[，；？。]/);
+    this.answers = yuanwen.slice(0, -1).split(/[，；？。！]/);
     this.fenjus = [...this.answers].sort(() => Math.random() - 0.5);
   }
 }
