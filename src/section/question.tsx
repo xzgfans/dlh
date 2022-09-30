@@ -7,6 +7,10 @@ import { AppContext } from '../../pages';
 
 const Question = () => {
   const {
+    pre,
+    setPre,
+    post,
+    setPost,
     setTrys,
     setFenjus,
     answers,
@@ -29,13 +33,16 @@ const Question = () => {
     setTrys([...answers]);
   };
   const nextQ = async () => {
-    const { fenjus, answers, yuanwen, index } = await api(checkedItems);
-    console.log("yuanwen", yuanwen)
+    const q = await api(checkedItems);
+    const { pre, fenjus, answers, yuanwen, index, post} = q;
+    // console.log("yuanwen", yuanwen)
     setTrys([]);
     setFenjus(fenjus);
     setAnswers(answers);
     setYuanwen(yuanwen);
     setIndex(index);
+    setPre(pre);
+    setPost(post);
   };
 
   return (

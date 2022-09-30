@@ -5,6 +5,9 @@ import q5 from './q5.json';
 import wang5lv from './wang5lv.json';
 import du5lv from './du5lv.json';
 import tishu from './tishu.json';
+import duilianhua from './duilianhua.json';
+import { StringNullableChain } from 'lodash';
+import { parse } from 'path';
 const shuffleArray = (array: any[]) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -21,36 +24,50 @@ const qm: any = {
   '王维五律':wang5lv,
   '杜甫五律':du5lv
 };
-
 export class IQuestion {
+  pre: string;
+  post:string;
   fenjus: string[];
   answers: string[];
   yuanwen: string;
   index: Number;
 
   constructor(
-    fenjus: string[],
-    answers: string[],
+    pre: string,
     yuanwen: string,
+    post: string,
     index: Number) {
-    this.fenjus = fenjus;
-    this.answers = answers;
+    this.pre = pre;
     this.yuanwen = yuanwen;
+    this.post = post;
     this.index = index;
+    this.answers = yuanwen.slice(0, -1).split(/[，；？。]/);
+    this.fenjus = [...this.answers].sort(() => Math.random() - 0.5);
   }
 }
-export async function api(checkedItems: string[]): Promise<IQuestion> {
-  console.log('checkedItems:' + checkedItems);
+const regex=/^(.*?)“(.*；.*)”(.*)$/
+function parseLine(line: string): IQuestion {
+  var m = regex.exec(line);
+  if(m != null) {
+    // console.log("parseLine pre",m[1],"lian", m[2],"post",m[3])
+    return new IQuestion(m[1], m[2],m[3], 0)
+  } else {
+    console.log("NOT ",line)
+    return new IQuestion(line,"","", 0)
+  }
+}
 
-  var qs = checkedItems.map((i) => qm[i]).reduce((acc, v) => acc.concat(v), []);
-  console.log('qs:' + qs.length);
-  
-  const answer = qs[Math.floor(Math.random() * qs.length)];
-  const answers = answer.slice(0, -1).split(/[，；？。]/);
-  const fenjus = [...answers].sort(() => Math.random() - 0.5);
-  
-  const [yuanwen, index] = await getTishu(answer);
-  return new IQuestion(fenjus, answers, yuanwen, index);
+const lians: IQuestion[] = 
+  duilianhua
+    .map(line=>parseLine(line));
+export async function api(checkedItems: string[]): Promise<IQuestion> {
+  // console.log('checkedItems:' + checkedItems);
+
+  // var qs = checkedItems.map((i) => qm[i]).reduce((acc, v) => acc.concat(v), []);
+  // console.log('qs:' + qs.length);
+  var index = Math.floor(Math.random() * lians.length)
+  // console.log("api", index)
+  return lians[index];
 }
 export async function getTishu(answer: string): Promise<[string, Number]> {
   console.log('search for ' + answer);
