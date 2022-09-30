@@ -8,11 +8,13 @@ function getColor(a: string[], b: string[]) {
   return 'red';
 }
 const Lian = () => {
-  const { trys, answers, pre, post } = useContext(AppContext);
+  const { trys, answers, pre, post, daan } = useContext(AppContext);
   var len = Math.floor(answers.length / 2);
   var shang = trys.slice(0, len);
   var xia = trys.slice(len);
   var color = getColor(trys, answers);
+  var daanshang = daan.slice(0, len);
+  var daanxia = daan.slice(len);
   return (
     <VStack
       w="full"
@@ -29,6 +31,12 @@ const Lian = () => {
       </Text>
       <Text fontSize="2xl" bg={color} minH="1em">
         {xia.join(' ')}
+      </Text>
+      <Text fontSize="2xl" bg="green" minH="1em">
+        {daanshang.join(' ')}
+      </Text>
+      <Text fontSize="2xl" bg="green" minH="1em">
+        {daanxia.join(' ')}
       </Text>
       <Text>{post}</Text>
     </VStack>

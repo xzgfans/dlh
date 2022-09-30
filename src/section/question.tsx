@@ -7,11 +7,10 @@ import { AppContext } from '../../pages';
 
 const Question = () => {
   const {
-    pre,
     setPre,
-    post,
     setPost,
     setTrys,
+    setDaan,
     setFenjus,
     answers,
     setAnswers,
@@ -30,13 +29,14 @@ const Question = () => {
     setTrys([answers[0]]);
   };
   const show = () => {
-    setTrys([...answers]);
+    setDaan([...answers]);
   };
   const nextQ = async () => {
     const q = await api(checkedItems);
     const { pre, fenjus, answers, yuanwen, index, post} = q;
     // console.log("yuanwen", yuanwen)
     setTrys([]);
+    setDaan([]);
     setFenjus(fenjus);
     setAnswers(answers);
     setYuanwen(yuanwen);
@@ -48,10 +48,10 @@ const Question = () => {
   return (
     <Container maxW="container.xl" p={0} minH="100vh">
       <ButtonGroup bg="gray.100" width="full">
-        <Button onClick={reset}>Reset</Button>
-        <Button onClick={hint}>Hint</Button>
-        <Button onClick={show}>Show</Button>
-        <Button onClick={nextQ}>Next</Button>
+        <Button onClick={reset}>重置</Button>
+        <Button onClick={hint}>提示</Button>
+        <Button onClick={show}>答案</Button>
+        <Button onClick={nextQ}>下一联</Button>
       </ButtonGroup>
       <Flex
         h={{ base: 'auto', md: '100vh' }}

@@ -7,6 +7,7 @@ import { Yuanwen } from '../src/section/yuanwen';
 export const AppContext = createContext(null as any);
 const IndexPage = () => {
   const [trys, setTrys] = useState([])
+  const [daan, setDaan] = useState([])
   const [fenjus, setFenjus] = useState([])
   const [answers, setAnswers] = useState([])
   const [yuanwen, setYuanwen] = useState("")
@@ -17,7 +18,7 @@ const IndexPage = () => {
   const [checkedItems, checkItems] = useReducer(reduceSelectedItems, ["3分句"])
 
   return (
-    <AppContext.Provider value={{ checkedItems, checkItems, trys, setTrys, fenjus, setFenjus, answers, setAnswers, yuanwen, setYuanwen, index, setIndex, pre, setPre, post, setPost }}>
+    <AppContext.Provider value={{ checkedItems, checkItems, trys, setTrys, fenjus, setFenjus, answers, setAnswers, yuanwen, setYuanwen, index, setIndex, pre, setPre, post, setPost, daan, setDaan }}>
       <Container maxW="container.xl" p={0} minH="100vh">
         <Tabs minH="100vh">
           <TabList>
